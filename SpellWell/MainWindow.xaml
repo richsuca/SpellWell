@@ -1,0 +1,50 @@
+﻿<Window x:Class="SpellWell.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpellWell"
+        mc:Ignorable="d"
+        Title="Grade 2 Word of the Week"
+        WindowStartupLocation="CenterScreen"
+        Width="549.5"
+        Height="341.5"
+        ResizeMode="NoResize" Icon="settings.ico" Background="#FFF0F1ED"
+        >
+    <StackPanel Margin="5">
+        <TextBlock Margin="5" FontSize="15">
+            Keyboard Shortcuts: Play Word (<Bold>F7</Bold>); Play Next Word (<Bold>F8</Bold>)
+        </TextBlock>
+        <DockPanel Margin="5">
+            <TextBlock DockPanel.Dock="Left" Name="txtStreak" FontSize="30" TextAlignment="Left" Background = "AntiqueWhite" Padding="5,0">
+                Streak: 0
+            </TextBlock>
+            <TextBlock DockPanel.Dock="Right" Name="txtCount" FontSize="30" TextAlignment="Right" >
+                Correct/Total:
+            </TextBlock>
+        </DockPanel>
+        <DockPanel Margin="5">
+            <Button DockPanel.Dock="Left" Name="cmdPlay" FontSize="30" Click="cmdPlay_Click" BorderThickness="5" Padding="10,0" >
+                Play Word
+            </Button>
+            <Button DockPanel.Dock="Right" Name="cmdPlayNext" FontSize="30" Click="cmdPlayNext_Click" HorizontalAlignment="Right" BorderThickness="5" Padding="10,0">
+                Play Next Word
+            </Button>
+        </DockPanel>
+        <StackPanel Margin="5">
+            <TextBlock FontSize="30" Padding="0,0,0,5">
+                Type your spelling:
+            </TextBlock>
+            <TextBox Name="txtWord" FontSize="30" TabIndex="0" KeyDown="txtWord_KeyDown" >
+            </TextBox>
+        </StackPanel>
+        <DockPanel Margin="5">
+            <TextBlock DockPanel.Dock="Left" Margin="5" Name="txtResult" FontSize="30" TextAlignment="Left" >
+            </TextBlock>
+            <Button DockPanel.Dock="Right" Name="cmdCheck" FontSize="30" Click="cmdCheck_Click" BorderThickness="5" HorizontalAlignment="Right" Padding="10,0">
+                Check
+            </Button>
+        </DockPanel>
+        <MediaElement Name="myMediaElement" LoadedBehavior="Manual" UnloadedBehavior="Manual" Visibility="Hidden" />
+    </StackPanel>
+</Window>
