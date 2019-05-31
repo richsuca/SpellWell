@@ -23,6 +23,7 @@ namespace SpellWell
         private bool flipWord = false;
         private string wordFilesDir = new DirectoryInfo(".").FullName + "/media/";
         private string logDir = new DirectoryInfo(".").FullName + "/";
+        private string correcto_word = "nothing";
 
         public MainWindow()
         {
@@ -112,6 +113,14 @@ namespace SpellWell
             }
         }
 
+        string Correcto()
+        {
+            string[] correctoWords = new string[] { "Correctamundo!", "Yep!", "Thats right!", "La bonne réponse!", "exacto!", "सही", "corretto", "Wow! you are good" };
+            Random r = new Random();
+            int correctoWordIndex = r.Next(correctoWords.Length);
+            return correctoWords[correctoWordIndex];
+        }
+
         private void CheckWord()
         {
             if (!flipWord)
@@ -125,7 +134,7 @@ namespace SpellWell
                 return;
             }
 
-            if (txtResult.Text == "Correctamundo!")
+            if (txtResult.Text == correcto_word)
             {
                 // repeat check of word that was spelled correctly already.
                 flipWord = false;
@@ -134,12 +143,13 @@ namespace SpellWell
 
             total += 1;
             string result = "";
-            if (txtWord.Text.ToLower() == word.ToLower())
+            if (txtWord.Text.Trim().ToLower() == word.ToLower())
             {
                 streak += 1;
                 score += 1;
                 txtResult.Foreground = Brushes.Green;
-                txtResult.Text = "Correctamundo!";
+                correcto_word = Correcto();
+                txtResult.Text = correcto_word;
                 result = "Yes";
             }
             else
